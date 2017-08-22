@@ -1,20 +1,21 @@
 FROM centos:centos7
 MAINTAINER ome-devel@lists.openmicroscopy.org.uk
 
+RUN yum -y install epel-release && yum -y update && yum -y clean all
+
 RUN yum install -y \
   build-essential \
   cmake \
   git \
   man \
-  libboost-all-dev \
-  libxerces-c-dev \
-  libxalan-c-dev \
-  libpng-dev \
-  libgtest-dev \
-  libtiff5-dev \
+  boost-devel \
+  xerces-c-devel \
+  xalan-c-devel \
+  libpng-devel \
+  gtest-devel \
+  libtiff-devel \
   locales \
-  python-pip \
-  && locale-gen en_US.UTF-8
+  python-pip
 
 ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
