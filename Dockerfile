@@ -3,8 +3,8 @@ MAINTAINER ome-devel@lists.openmicroscopy.org.uk
 
 RUN yum -y install epel-release && yum -y update && yum -y clean all
 
+RUN yum groupinstall -y "Development Tools"
 RUN yum install -y \
-  build-essential \
   cmake \
   git \
   man \
