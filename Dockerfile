@@ -32,7 +32,7 @@ RUN git clone --branch='v5.4.2' https://github.com/ome/ome-qtwidgets.git
 RUN git clone --branch='v0.4.0' https://github.com/ome/ome-cmake-superbuild.git
 
 WORKDIR /build
-RUN cmake \
+RUN cmake3 \
     -Dgit-dir=/git \
     -Dbuild-prerequisites=OFF \
     -Dome-superbuild_BUILD_gtest=ON \
