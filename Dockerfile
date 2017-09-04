@@ -5,7 +5,7 @@ RUN yum -y install epel-release && yum -y update && yum -y clean all
 
 RUN yum groupinstall -y "Development Tools"
 RUN yum install -y \
-  cmake \
+  cmake3 \
   git \
   man \
   boost-devel \
@@ -16,14 +16,6 @@ RUN yum install -y \
   libtiff-devel \
   locales \
   python-pip
-
-RUN yum install -y wget && \
-  wget http://www.cmake.org/files/v3.2/cmake-3.2.3.tar.gz && \
-  tar -zxvf cmake-3.2.3.tar.gz && \
-  cd cmake-3.2.3 && \
-  ./bootstrap && \
-  make && \
-  make install
 
 ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
@@ -40,7 +32,7 @@ RUN git clone --branch='v5.4.2' https://github.com/ome/ome-qtwidgets.git
 RUN git clone --branch='v0.4.0' https://github.com/ome/ome-cmake-superbuild.git
 
 WORKDIR /build
-RUN cmake \
+RUN cmake3 \
     -Dgit-dir=/git \
     -Dbuild-prerequisites=OFF \
     -Dome-superbuild_BUILD_gtest=ON \
