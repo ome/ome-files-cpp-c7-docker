@@ -40,4 +40,5 @@ RUN cmake3 \
     /git/ome-cmake-superbuild
 RUN make
 RUN make install
+RUN echo "/usr/local/lib" > /etc/ld.so.conf.d/usr-local.conf
 RUN ldconfig
