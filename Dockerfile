@@ -18,7 +18,7 @@ RUN yum install -y \
   python-pip
 
 RUN yum install -y centos-release-scl
-RUN yum install -y devtoolset-4-toolchain
+RUN yum install -y devtoolset-7-toolchain
 
 ENV LC_ALL=en_US.UTF-8
 ENV LANG=en_US.UTF-8
@@ -35,14 +35,14 @@ RUN git clone --branch='v5.4.3' https://github.com/ome/ome-qtwidgets.git
 RUN git clone --branch='v0.5.0' https://github.com/ome/ome-cmake-superbuild.git
 
 WORKDIR /build
-RUN scl enable devtoolset-4 -- cmake3 \
+RUN scl enable devtoolset-7 -- cmake3 \
     -Dgit-dir=/git \
     -Dbuild-prerequisites=OFF \
     -Dome-superbuild_BUILD_gtest=ON \
     -Dbuild-packages=ome-files \
     -DCMAKE_BUILD_TYPE=Release \
     /git/ome-cmake-superbuild
-RUN scl enable devtoolset-4 -- make
-RUN scl enable devtoolset-4 -- make install
+RUN scl enable devtoolset-7 -- make
+RUN scl enable devtoolset-7 -- make install
 RUN echo "/usr/local/lib" > /etc/ld.so.conf.d/usr-local.conf
 RUN ldconfig
